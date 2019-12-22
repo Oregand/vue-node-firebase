@@ -30,6 +30,10 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  async asyncData({ $axios }) {
+    const ip = await $axios.$get('http://icanhazip.com')
+    return { ip }
   }
 }
 </script>
