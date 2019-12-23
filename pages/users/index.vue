@@ -6,22 +6,24 @@
         User List
       </h1>
       <div class="flex flex-wrap">
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500">
+        <div
+          class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500"
+        >
           <table>
             <thead>
               <tr>
-                <th> ID </th>
-                <th> Name </th>
-                <th> Email </th>
-                <th> Avatar </th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Avatar</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="user in users">
-                <td> {{ user.id }} </td>
-                <td> {{ user.name }} </td>
-                <td> {{ user.email }} </td>
-                <td> {{ user.avatar }} </td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.avatar }}</td>
               </tr>
             </tbody>
           </table>
