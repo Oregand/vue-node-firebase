@@ -24,6 +24,9 @@
                 <td class="border px-4 py-2">
                   <img :src="user.avatar" alt="avatar" />
                 </td>
+                <td class="border px-4 py-2">
+                  <nuxt-link to="/">Home page</nuxt-link>
+                </td>
               </tr>
             </tbody>
           </table>
