@@ -3,22 +3,29 @@
     <div>
       <logo />
       <h1 class="title">
-        vue-node-firebase
+        User List
       </h1>
-      <h2 class="subtitle">
-        My stylish Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500">
+          <table>
+            <thead>
+              <tr>
+                <th> ID </th>
+                <th> Name </th>
+                <th> Email </th>
+                <th> Avatar </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="user in users">
+                <td> {{ user.id }} </td>
+                <td> {{ user.name }} </td>
+                <td> {{ user.email }} </td>
+                <td> {{ user.avatar }} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
