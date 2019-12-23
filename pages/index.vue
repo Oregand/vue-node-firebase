@@ -9,16 +9,8 @@
         My stylish Nuxt.js project
       </h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <nuxt-link to="/">Home page</nuxt-link>
+        <nuxt-link to="/users">Users List</nuxt-link>
       </div>
     </div>
   </div>
@@ -30,12 +22,6 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
-  },
-  async asyncData({ $axios }) {
-    const ip = await $axios.$get(
-      'https://us-central1-social-ape-1717c.cloudfunctions.net/api/screams'
-    )
-    return { ip }
   }
 }
 </script>
