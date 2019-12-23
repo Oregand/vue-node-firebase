@@ -32,7 +32,9 @@ export default {
     Logo
   },
   async asyncData({ $axios }) {
-    const ip = await $axios.$get('http://icanhazip.com')
+    const ip = await $axios.$get(
+      'https://us-central1-social-ape-1717c.cloudfunctions.net/api/screams'
+    )
     return { ip }
   }
 }

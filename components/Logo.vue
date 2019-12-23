@@ -23,14 +23,6 @@
     </g>
   </svg>
 </template>
-<script>
-export default {
-  async fetch ({ store, params }) {
-    let { data } = await axios.get('http://my-api/stars')
-    store.commit('setStars', data)
-  }
-}
-</script>
 <style>
 .NuxtLogo {
   animation: 1s appear;
