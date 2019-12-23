@@ -24,26 +24,23 @@
                       d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"
                     />
                   </svg>
-                  Members only
                 </p>
                 <div class="text-gray-900 font-bold text-xl mb-2">
-                  Can coffee make you a better developer?
+                  {{ user.ID }}
                 </div>
                 <p class="text-gray-700 text-base">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                  exercitationem praesentium nihil.
+                  {{ user.email }}
                 </p>
               </div>
               <div class="flex items-center">
                 <img
+                  :src="user.avatar"
                   class="w-10 h-10 rounded-full mr-4"
-                  src="/img/jonathan.jpg"
                   alt="Avatar of Jonathan Reinink"
                 />
                 <div class="text-sm">
-                  <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-                  <p class="text-gray-600">Aug 18</p>
+                  <p class="text-gray-900 leading-none">{{ user.name }}</p>
+                  <p class="text-gray-600">{{ user.createdAt }}</p>
                 </div>
               </div>
             </div>
@@ -60,6 +57,12 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  async asyncData({ $axios, params }) {
+    const user = await $axios.$get(
+      `https://5e01296a685ac80014515256.mockapi.io/api/users/${params.id}`
+    )
+    return { user }
   }
 }
 </script>
