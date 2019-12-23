@@ -6,24 +6,24 @@
         User List
       </h1>
       <div class="flex flex-wrap">
-        <div
-          class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500"
-        >
-          <table>
+        <div class="w-full">
+          <table class="table-auto">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Avatar</th>
+                <th class="px-4 py-2">ID</th>
+                <th class="px-4 py-2">Name</th>
+                <th class="px-4 py-2">Email</th>
+                <th class="px-4 py-2">Avatar</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="user in users">
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.avatar }}</td>
+                <td class="border px-4 py-2">{{ user.id }}</td>
+                <td class="border px-4 py-2">{{ user.name }}</td>
+                <td class="border px-4 py-2">{{ user.email }}</td>
+                <td class="border px-4 py-2">
+                  <img :src="user.avatar" alt="avatar" />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -50,11 +50,6 @@ export default {
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -74,15 +69,8 @@ export default {
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.w-full {
+  height: 50vh;
+  overflow-y: scroll;
 }
 </style>
