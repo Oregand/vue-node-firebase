@@ -29,7 +29,13 @@
         />
       </div>
       <div class="flex items-center justify-between">
+        <p v-if="response" class="text-red-500 text-xs italic">
+          {{ response }}
+        </p>
+      </div>
+      <div class="flex items-center justify-between">
         <button
+          v-if="payload.name && payload.email"
           @click="createNewUser()"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
@@ -53,8 +59,8 @@ export default {
   data: () => {
     return {
       payload: {
-        name: VueTypes.string,
-        email: VueTypes.string,
+        name: '',
+        email: '',
         imageUrl: 'https://unsplash.it/50?image={{i}}'
       },
       response: VueTypes.object
@@ -73,16 +79,7 @@ export default {
 }
 </script>
 <style>
-.NuxtLogo {
-  animation: 1s appear;
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.w-full {
+  font-size: 1rem;
 }
 </style>
