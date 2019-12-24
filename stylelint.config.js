@@ -1,5 +1,5 @@
 module.exports = {
-  "rules": {
-    "color-no-invalid-hex": true,
+  rules: {
+    'color-no-invalid-hex': true
   }
 }
