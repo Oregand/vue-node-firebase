@@ -72,7 +72,7 @@ export default {
       return `/users/${userId}`
     },
     async deleteUser(userId) {
-      const response = await this.$axios.$del(`
+      const response = await this.$axios.$delete(`
         https://5e01296a685ac80014515256.mockapi.io/api/users/${userId}
       `)
       this.response = response
