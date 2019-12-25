@@ -25,7 +25,8 @@
                   <img :src="user.avatar" alt="avatar" />
                 </td>
                 <td class="border px-4 py-2">
-                  <nuxt-link to="/">Home page</nuxt-link>
+                  <nuxt-link :to="userLink(user.id)">Edit</nuxt-link>
+                  <nuxt-link to="/">Delete</nuxt-link>
                 </td>
               </tr>
             </tbody>
@@ -42,6 +43,11 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  methods: {
+    userLink: (userId) => {
+      return `/users/${userId}`
+    }
   },
   async asyncData({ $axios }) {
     const users = await $axios.$get(
