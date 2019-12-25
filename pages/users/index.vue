@@ -25,8 +25,18 @@
                   <img :src="user.avatar" alt="avatar" />
                 </td>
                 <td class="border px-4 py-2">
-                  <nuxt-link :to="userLink(user.id)">Edit</nuxt-link>
-                  <nuxt-link to="/">Delete</nuxt-link>
+                  <nuxt-link
+                    :to="userLink(user.id)"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Edit
+                  </nuxt-link>
+                  <button
+                    @click="deleteUser(user.id)"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Delete {{ user.name }}
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -38,15 +48,17 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types'
+
 import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
     Logo
   },
-  methods: {
-    userLink: (userId) => {
-      return `/users/${userId}`
+  data: () => {
+    return {
+      response: VueTypes.object.def()
     }
   },
   async asyncData({ $axios }) {
@@ -54,6 +66,17 @@ export default {
       'https://5e01296a685ac80014515256.mockapi.io/api/users'
     )
     return { users }
+  },
+  methods: {
+    userLink: (userId) => {
+      return `/users/${userId}`
+    },
+    async deleteUser(userId) {
+      const response = await this.$axios.$del(`
+        https://5e01296a685ac80014515256.mockapi.io/api/users/${userId}
+      `)
+      this.response = response
+    }
   }
 }
 </script>

@@ -4,7 +4,10 @@
       <logo />
       <div class="flex flex-wrap">
         <div class="w-full">
-          <div class="max-w-sm w-full lg:max-w-full lg:flex">
+          <div
+            v-if="!flags.isEdit"
+            class="max-w-sm w-full lg:max-w-full lg:flex"
+          >
             <div
               class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
               style="background-image: url('/img/card-left.jpg')"
@@ -45,6 +48,7 @@
               </div>
             </div>
           </div>
+          <EditUserForm v-if="flags.isEdit" />
         </div>
       </div>
     </div>
@@ -52,11 +56,22 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types'
+
 import Logo from '~/components/Logo.vue'
+import EditUserForm from '~/components/EditUserForm/index.vue'
 
 export default {
   components: {
-    Logo
+    Logo,
+    EditUserForm
+  },
+  data: () => {
+    return {
+      flags: {
+        isEdit: VueTypes.bool.def(false)
+      }
+    }
   },
   async asyncData({ $axios, params }) {
     const user = await $axios.$get(
