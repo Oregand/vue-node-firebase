@@ -1,11 +1,18 @@
 <template>
   <div class="container">
     <div>
-      <logo />
       <div class="flex flex-wrap">
         <div class="w-full">
+          <button
+            @click="flags.isEdit = !flags.isEdit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Edit User
+          </button>
+        </div>
+        <div class="w-full">
           <div
-            v-if="!flags.isEdit"
+            v-if="flags.isEdit"
             class="max-w-sm w-full lg:max-w-full lg:flex"
           >
             <div
@@ -48,7 +55,7 @@
               </div>
             </div>
           </div>
-          <EditUserForm v-if="flags.isEdit" />
+          <EditUserForm v-if="!flags.isEdit" />
         </div>
       </div>
     </div>
@@ -58,12 +65,10 @@
 <script>
 import VueTypes from 'vue-types'
 
-import Logo from '~/components/Logo.vue'
 import EditUserForm from '~/components/EditUserForm/index.vue'
 
 export default {
   components: {
-    Logo,
     EditUserForm
   },
   data: () => {
