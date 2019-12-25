@@ -10,7 +10,7 @@
         </label>
         <input
           id="Name"
-          :value="user.name"
+          v-model="user.user.name"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           placeholder="Name"
@@ -22,7 +22,7 @@
         </label>
         <input
           id="Email"
-          :value="user.email"
+          v-model="user.user.email"
           class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="email"
           placeholder="Email"
@@ -35,7 +35,7 @@
       </div>
       <div class="flex items-center justify-between">
         <button
-          v-if="user.name && user.email"
+          v-if="user.user.name && user.user.email"
           @click="editUser()"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
@@ -64,19 +64,14 @@ export default {
   },
   data: () => {
     return {
-      payload: {
-        name: '',
-        email: '',
-        imageUrl: 'https://unsplash.it/50?image={{i}}'
-      },
       response: VueTypes.object
     }
   },
   methods: {
     async editUser() {
       const response = await this.$axios.$put(
-        `https://5e01296a685ac80014515256.mockapi.io/api/users/${this.user.id}`,
-        this.payload
+        `https://5e01296a685ac80014515256.mockapi.io/api/users/${this.user.user.id}`,
+        this.user.user
       )
 
       this.response = response
