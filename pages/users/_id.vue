@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-          <EditUserForm v-if="!flags.isEdit" />
+          <EditUserForm :user="{ user }" v-if="!flags.isEdit" />
         </div>
       </div>
     </div>
